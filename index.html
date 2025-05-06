@@ -14,8 +14,7 @@
       This is a placeholder for base href that will be replaced by the value of
       the `--base-href` argument provided to `flutter build`.
     -->
-    <!--<base href="/eamazon.github.io/">  -->
-    <base href="/eamazon/">
+    <base href="/eamazon.github.io/">
     <meta charset="UTF-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta content="A new Flutter project." name="description">
@@ -37,6 +36,7 @@
 <body>
 <script defer src="flutter_bootstrap.js"></script>
 <script defer src="flutter.js"></script>
+<script src="js/payment.js"></script>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
@@ -44,27 +44,25 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging.js"></script>
 <script>
     const firebaseConfig = {
-    apiKey: 'AIzaSyDFFTa5H5BE1Z_xzq3F0DNTM8AxL2ZmvF4',
-    appId: '1:948737216499:web:9d8e64de1f9bb941478c86',
-    messagingSenderId: '948737216499',
-    projectId: 'e-5d676',
-    authDomain: 'e-5d676.firebaseapp.com',
-    storageBucket: 'e-5d676.firebasestorage.app',
-    measurementId: 'G-Z37HQM74BZ',
+        apiKey: 'AIzaSyDFFTa5H5BE1Z_xzq3F0DNTM8AxL2ZmvF4',
+        appId: '1:948737216499:web:9d8e64de1f9bb941478c86',
+        messagingSenderId: '948737216499',
+        projectId: 'e-5d676',
+        authDomain: 'e-5d676.firebaseapp.com',
+        storageBucket: 'e-5d676.firebasestorage.app',
+        measurementId: 'G-Z37HQM74BZ',
     };
     firebase.initializeApp(firebaseConfig);
     const messaging = firebase.messaging();
     messaging.onBackgroundMessage((payload) => {
-  console.log('[firebase-messaging-sw.js] Received background message: ', payload);
-  // Customize notification here
-  const notificationTitle = payload.notification?.title || 'Background Message';
-  const notificationOptions = {
-    body: payload.notification?.body || 'You have a new message!',
-    icon: '/flutter_logo.png', // Optional: Add an icon (place in web/ directory)
-  };
-
-  self.registration.showNotification(notificationTitle, notificationOptions);
-});
+        console.log('[firebase-messaging-sw.js] Received background message: ', payload);
+        const notificationTitle = payload.notification?.title || 'Background Message';
+        const notificationOptions = {
+            body: payload.notification?.body || 'You have a new message!',
+            icon: '/eamazon/flutter_logo.png',
+        };
+        self.registration.showNotification(notificationTitle, notificationOptions);
+    });
 </script>
 </body>
 </html>
