@@ -1,28 +1,22 @@
-// firebase-messaging-sw.js
-importScripts('https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js');
-importScripts('https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging.js');
+importScripts('https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js');
+importScripts('https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging-compat.js');
 
-// Initialize Firebase with your project's configuration
-const firebaseConfig = {
-                           apiKey: 'AIzaSyDFFTa5H5BE1Z_xzq3F0DNTM8AxL2ZmvF4',
-                           appId: '1:948737216499:web:9d8e64de1f9bb941478c86',
-                           messagingSenderId: '948737216499',
-                           projectId: 'e-5d676',
-                           authDomain: 'e-5d676.firebaseapp.com',
-                           storageBucket: 'e-5d676.firebasestorage.app',
-                           measurementId: 'G-Z37HQM74BZ',
-                           };firebase.initializeApp(firebaseConfig);
+firebase.initializeApp({
+  apiKey: 'AIzaSyDFFTa5H5BE1Z_xzq3F0DNTM8AxL2ZmvF4',
+  appId: '1:948737216499:web:9d8e64de1f9bb941478c86',
+  messagingSenderId: '948737216499',
+  projectId: 'e-5d676',
+  authDomain: 'e-5d676.firebaseapp.com',
+  storageBucket: 'e-5d676.appspot.com',
+  measurementId: 'G-Z37HQM74BZ',
+});
 
-                              // Retrieve firebase messaging
-                              const messaging = firebase.messaging();
+const messaging = firebase.messaging();
 
-                              messaging.onBackgroundMessage(function(payload) {
-                                console.log("Received background message ", payload);
-
-                                const notificationTitle = payload.notification.title;
-                                const notificationOptions = {
-                                  body: payload.notification.body,
-                                };
-
-                                self.registration.showNotification(notificationTitle, notificationOptions);
-                              });});
+messaging.onBackgroundMessage((payload) => {
+  console.log('[firebase-messaging-sw.js] Background message:', payload);
+  self.registration.showNotification(payload.notification.title, {
+    body: payload.notification.body,
+    icon: '/eamazon.github.io/flutter_logo.png',
+  });
+});
