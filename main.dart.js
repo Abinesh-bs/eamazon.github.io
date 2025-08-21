@@ -53430,7 +53430,7 @@ A.aN2.prototype={
 $0(){this.a.$0()},
 $S:11}
 A.aN3.prototype={
-$1(a){$.aSl().BH("eval",['      var options = {\n        "key": "rzp_test_1hp5w4ov0F2Peq",\n        "amount": "'+B.d.aL(this.a*100)+'",\n        "currency": "INR",\n        "name": "Test Corp",\n        "description": "Test Transaction",\n        "handler": function (response){\n            razorpaySuccess(response.razorpay_payment_id);\n        },\n        "theme": {"color": "#3399cc"}\n      };\n      var rzp1 = new Razorpay(options);\n      rzp1.open();\n    '])},
+$1(a){$.aSl().BH("eval",['      var options = {\n        "key": "rzp_test_R7E02plsrtkmYG",\n        "amount": "'+B.d.aL(this.a*100)+'",\n        "currency": "INR",\n        "name": "Test Corp",\n        "description": "Test Transaction",\n        "handler": function (response){\n            razorpaySuccess(response.razorpay_payment_id);\n        },\n        "theme": {"color": "#3399cc"}\n      };\n      var rzp1 = new Razorpay(options);\n      rzp1.open();\n    '])},
 $S:132}
 A.aui.prototype={
 $1(a){return a},
